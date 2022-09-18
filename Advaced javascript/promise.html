@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise Javascript</title>
+
+    <script>
+       /* let complete = true;
+        let prom = new Promise(function(resolve, reject){
+            if(complete){
+                resolve("Pass");
+            }
+            else {
+                reject("Fail");
+            }
+        });
+        console.log(prom);
+        */
+
+        function prom(complete){
+        return new Promise(function(resolve, reject){
+            if(complete){
+                resolve("Pass");
+            }
+            else {
+                reject("Fail");
+            }
+        });
+        }
+        console.log(prom(false));
+    </script>    
+</head>
+<body>
+    
+</body>
+</html>
