@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch</title>
+  <style>
+    .stopwatch {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stopwatch">0:00:00</div>
+<button onclick="startStop()">Start/Stop</button>
+<button onclick="reset()">Reset</button>
+
+<script>
+  let timer;
+  let totalSeconds = 0;
+
+  function startStop() {
+    if (!timer) {
+      timer = setInterval(setTime, 1000);
+    } else {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function setTime() {
+    ++totalSeconds;
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds - hours * 3600) / 60);
+    const seconds = totalSeconds - (hours * 3600 + minutes * 60);
+
+    document.querySelector('.stopwatch').innerText = `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+  }
+
+  function reset() {
+    clearInterval(timer);
+    timer = null;
+    totalSeconds = 0;
+    document.querySelector('.stopwatch').innerText = '0:00:00';
+  }
+</script>
+
+</body>
+</html>
